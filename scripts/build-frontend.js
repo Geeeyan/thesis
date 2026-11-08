@@ -38,7 +38,7 @@ try {
   if (!fs.existsSync(path.join(outputDir, 'index.html'))) throw new Error('Frontend build completed without index.html.');
 
   fs.rmSync(buildDir, { recursive: true, force: true });
-  fs.renameSync(outputDir, buildDir);
+  fs.cpSync(outputDir, buildDir, { recursive: true });
 } finally {
   fs.rmSync(tempDir, { recursive: true, force: true });
 }
